@@ -25,7 +25,10 @@ def fake_user_required_login_password():
     email = fake.email()
     password = fake.password()
     cu.user_creation(data={'email': email, 'password': password, 'name': 'Dmitry'})
+
     yield email, password
+
+    cu.delete_user(data={'email': email, 'password': password, 'name': 'Dmitry'})
 
 
 @allure.step("Получение токена пользователя")

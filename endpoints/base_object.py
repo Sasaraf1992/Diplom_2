@@ -2,6 +2,7 @@ import requests
 import settings
 import allure
 
+
 class BaseObject:
     response = None
     response_json = None
@@ -9,9 +10,6 @@ class BaseObject:
     token = None
     response_status = None
     response_text = None
-
-    def __init__(self):
-        self.response_headers = None
 
     @allure.step('Проверка статуса и кода')
     def check_status_code_and_text(self, code, name, text):
@@ -27,12 +25,6 @@ class BaseObject:
 
     def check_status_code(self, code):
         assert self.response_status_code == code
-
-    def check_response_text(self, text):
-        assert text in self.response_text
-
-    def check_headers(self, header, text):
-        assert self.response_headers.get(header).startswith(text)
 
     @allure.step('Удаление пользователя')
     def delete_user(self, data):
