@@ -14,7 +14,7 @@ class TestUserDataChange:
         {'password': fake.password()},
         {'name': fake.first_name()}
     ])
-    def test_auth_user_successful_data_change(self, fake_user,get_token, data_change):
+    def test_auth_user_successful_data_change(self, fake_user, get_token, data_change):
         cd = ChangeDataUser()
         lu = LoginUser()
         lu.user_login(data=SD.FAKE_USER)

@@ -25,7 +25,3 @@ class BaseObject:
 
     def check_status_code(self, code):
         assert self.response_status_code == code
-
-    @allure.step('Удаление пользователя')
-    def delete_user(self, data):
-        self.response = requests.delete(settings.URL_USER_DELETE, json=data)

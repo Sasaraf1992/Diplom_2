@@ -3,14 +3,16 @@ from faker import Faker
 import pytest
 from endpoints.create_user_object import CreateUser
 import allure
+
 fake = Faker()
 
 
 class TestUserCreation:
 
-    @allure.title('Проверка создания пользователя')
     def test_user_successful_creation(self, fake_user):
         fake_user.check_status_code_and_text(200, 'success', True)
+
+
 
     @allure.title('Проверка ошибки создания уже существующего пользователя')
     def test_user_already_existing_error(self, fake_user):

@@ -6,7 +6,7 @@ import allure
 
 class TestGetOrder:
     @allure.title('Проверка получения заказа авторизованным пользователем')
-    def test_get_order_user_auth_successful(self, fake_user, get_token):
+    def test_get_order_user_auth_successful(self, get_token):
         lu = LoginUser()
         co = CreateOrder()
         lu.user_login(data=SD.FAKE_USER)
@@ -15,7 +15,7 @@ class TestGetOrder:
         co.check_status_code_and_text(200, 'success', True)
 
     @allure.title('Проверка получения заказа неавторизованным пользователем')
-    def test_get_order_user_not_auth_failed(self, fake_user, get_token):
+    def test_get_order_user_not_auth_failed(self, get_token):
         lu = LoginUser()
         co = CreateOrder()
         lu.user_login(data=SD.FAKE_USER)
