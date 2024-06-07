@@ -13,5 +13,5 @@ class CreateUser(BaseObject):
         self.token = self.response_json.get('accessToken')
 
     @allure.step('Удаление пользователя')
-    def delete_user(self,token):
-        self.response = requests.delete(settings.URL_USER_DELETE, headers={'Authorization': f'{token}'})
+    def delete_user(self,data, token):
+        self.response = requests.delete(settings.URL_USER_DELETE,json = data,  headers={'Authorization': f'{token}'})

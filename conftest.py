@@ -18,7 +18,7 @@ def fake_user():
     token = cu.token
     yield cu
 
-    cu.delete_user(token)
+    cu.delete_user(data={'email': email, 'password': password, 'name': name}, token = token)
 
 
 @allure.step("Получение токена пользователя")
