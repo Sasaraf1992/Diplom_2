@@ -16,15 +16,13 @@ class TestUserLogin:
         lu.check_status_code_and_text(200, 'success', True)
 
     @allure.title('Проверка ошибки авторизации пользователя при неверном логине')
-    def test_user_auth_with_wrong_login(self, fake_user, fake_user_required_login_password):
-        password = fake_user_required_login_password
+    def test_user_auth_with_wrong_login(self, fake_user):
         lu = LoginUser()
-        lu.user_login(data={'email': fake.email(), 'password': password})
+        lu.user_login(data={'email': fake.email(), 'password': SD.FAKE_USER['password']})
         lu.check_status_code_and_text(401, 'success', False)
 
     @allure.title('Проверка ошибки авторизации пользователя при неверном пароле')
-    def test_user_auth_with_wrong_password(self, fake_user, fake_user_required_login_password):
-        email = fake_user_required_login_password
+    def test_user_auth_with_wrong_password(self, fake_user):
         lu = LoginUser()
-        lu.user_login(data={'email': email, 'password': '23322'})
+        lu.user_login(data={'email': SD.FAKE_USER['email'], 'password': '23322'})
         lu.check_status_code_and_text(401, 'success', False)

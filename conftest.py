@@ -27,12 +27,3 @@ def get_token(fake_user):
     token = fake_user.token
     header_token = {'Authorization': f'{token}'}
     return header_token
-
-
-@allure.step("Создание фейкового пользователя отдельно пароль и email")
-@pytest.fixture(scope='function')
-def fake_user_required_login_password(fake_user):
-    email = SD.FAKE_USER['email']
-    password = SD.FAKE_USER['password']
-
-    yield email, password
